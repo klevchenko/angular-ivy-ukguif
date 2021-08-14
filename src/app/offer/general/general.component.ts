@@ -68,7 +68,7 @@ export class GeneralComponent implements OnInit {
 
   submit() {
     this.editMode = false;
-    console.log(this.generalForm.value)
+    console.log(JSON.stringify(this.generalForm.value));
   }
 
   removeImg() {

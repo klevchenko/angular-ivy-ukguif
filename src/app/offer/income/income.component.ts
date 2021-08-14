@@ -64,7 +64,8 @@ export class IncomeComponent implements OnInit {
 
     sessionStorage.setItem('incomeData',JSON.stringify(this.incomeDataForm.value.incomeData));
     this.savedIncomeData = JSON.parse(<string>sessionStorage.getItem('incomeData'));
-    console.log(this.incomeDataForm.value.incomeData);
+    console.log(JSON.stringify(this.incomeDataForm.value.incomeData));
+
   }
 
   displayedColumns: string[] = ['key', 'val'];

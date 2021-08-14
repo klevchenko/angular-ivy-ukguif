@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-expenses',
@@ -7,42 +7,34 @@ import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./expenses.component.scss']
 })
 export class ExpensesComponent implements OnInit {
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  expensesDataKeys = [
-    'Золото',
-    'Серебро',
-    'Рубини',
-    'Алмази',
-  ];
+  expensesDataKeys = ['Золото', 'Серебро', 'Рубини', 'Алмази'];
 
   editMode: boolean;
   savedExpensesData: any;
   expensesDataForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-
     this.editMode = false;
 
     this.expensesDataForm = this.fb.group({
       googleStore: '',
       appleStore: '',
       windowsStore: '',
-      expensesArr: this.fb.array([]),
+      expensesArr: this.fb.array([])
     });
   }
 
   get expensesArr(): FormArray {
-    return this.expensesDataForm.get("expensesArr") as FormArray
+    return this.expensesDataForm.get('expensesArr') as FormArray;
   }
 
   newExpensesData(key = '', val = ''): FormGroup {
     return this.fb.group({
       key: key,
-      val: val,
-    })
+      val: val
+    });
   }
 
   addExpensesData(key = '', val = '') {
@@ -56,9 +48,8 @@ export class ExpensesComponent implements OnInit {
   onSubmit() {
     this.editMode = false;
     this.savedExpensesData = this.expensesDataForm.value.expensesArr;
-    console.log(this.expensesDataForm.value);
+    console.log(JSON.stringify(this.expensesDataForm.value));
   }
 
   displayedColumns: string[] = ['key', 'val'];
-
 }
